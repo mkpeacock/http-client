@@ -12,12 +12,15 @@ if (isset($_POST['url'])) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $_POST['url']);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $parameters = array();
+        foreach ($_POST['parameters']['keys'] as $i => $key) {
+            $parameters[$key] = $_POST['parameters']['values'][$i];
+        }        
         switch ($_POST['method']) {
+            case 'GET':
+                curl_setopt($ch, CURLOPT_URL, $_POST['url'] . '?' . http_build_query($parameters));
+            break;
             case 'POST':
-                $parameters = array();
-                foreach ($_POST['parameters']['keys'] as $i => $key) {
-                    $parameters[$key] = $_POST['parameters']['values'][$i];
-                }
                 curl_setopt($ch, CURLOPT_POST, true);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
             break;

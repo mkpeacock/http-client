@@ -28,6 +28,15 @@
               <input type="url" name="url" id="url" class="span12" placeholder="http://" />
             </div>
           </div>
+          <div class="control-group">
+            <label class="control-label" for="method">Method</label>
+            <div class="controls">
+              <select name="method" id="method" class="span2">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+              </select>
+            </div>
+          </div>
           <div class="control-group" id="parameters">
             <label class="control-label">Parameters</label>
             <div class="row">
