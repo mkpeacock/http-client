@@ -24,6 +24,10 @@ if (isset($_POST['url'])) {
                 curl_setopt($ch, CURLOPT_POST, true);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
             break;
+            case 'PUT':
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
+            break;
         }
         $result = curl_exec($ch);
         if ($result === false) {

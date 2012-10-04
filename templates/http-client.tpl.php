@@ -34,6 +34,7 @@
               <select name="method" id="method" class="span2">
                 <option value="GET">GET</option>
                 <option value="POST">POST</option>
+                <option value="PUT">PUT</option>
               </select>
             </div>
           </div>
