@@ -4,7 +4,11 @@
         e.preventDefault();
         var button = $(this);
         var row = $(this).closest('.row');
-        row.clone().insertAfter($('.row:last'));
+        if (row.find('input.span6').val() == '' && row.find('input.span5').val() == '') {
+            return;
+        }
+        var newrow = row.clone().insertAfter($('.row:last'));
+        newrow.find('input').val('');
         button.removeClass('btn-primary')
               .removeClass('btn-add')
               .addClass('btn-danger')
@@ -16,7 +20,7 @@
     $('.btn-remove').live('click', function(e) {
         e.preventDefault();
         var row = $(this).closest('.row');
-        if (confirm('Are you sure?')) {
+        if (confirm('Are you sure you wish to remove this parameter?')) {
             row.remove();
         }
     });
